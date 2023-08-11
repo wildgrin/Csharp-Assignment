@@ -1,4 +1,6 @@
-﻿namespace Assignment
+﻿using Newtonsoft.Json;
+
+namespace Assignment
 {
     public class Solution
     {
@@ -22,6 +24,8 @@
                 {
                     countMap[n] = 1;
                 }
+
+                Console.WriteLine(JsonConvert.SerializeObject(numsArr));
             }
 
             // Passing the dictionary in final list
@@ -33,19 +37,21 @@
                     finalList[frequency] = new List<int>();
                 }
                 finalList[frequency].Add(key);
+                Console.WriteLine(JsonConvert.SerializeObject(finalList));
+
             }
 
-            List<int> res = new();
+            List<int> result = new();
 
             // Variable initialization to keep track of the number of elements added to final list array
-            for (int pos = finalList.Length - 1; pos >= 0 && res.Count < k; pos--)
+            for (int index = finalList.Length - 1; index >= 0 && result.Count < k; index--)
             {
-                if (finalList[pos] != null)
+                if (finalList[index] != null)
                 {
-                    res.AddRange(finalList[pos]);
+                    result.AddRange(finalList[index]);
                 }
             }
-            return res;
+            return result;
         }
     }
 }
